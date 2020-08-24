@@ -5,20 +5,17 @@ from policy import Policy
 
 
 '''
-
+inp:
+    env: environment with model information, i.e. you know transition dynamics and reward function
+    pi: policy
+    initV: initial V(s); numpy array shape of [nS,]
+    theta: exit criteria
+return:
+    V: $v_\pi$ function; numpy array shape of [nS]
+    Q: $q_\pi$ function; numpy array shape of [nS,nA]
 '''
 def value_prediction(env:EnvWithModel, pi:Policy, initV:np.array, theta:float) -> Tuple[np.array,np.array]:
-    '''
-    inp:
-        env: environment with model information, i.e. you know transition dynamics and reward function
-        pi: policy
-        initV: initial V(s); numpy array shape of [nS,]
-        theta: exit criteria
-    return:
-        V: $v_\pi$ function; numpy array shape of [nS]
-        Q: $q_\pi$ function; numpy array shape of [nS,nA]
-    '''
-  
+
     nA = env.spec.nA        # Number of actions
     nS = env.spec.nS        # Number of states
     
